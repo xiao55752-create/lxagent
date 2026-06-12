@@ -154,7 +154,7 @@ export function MaterialCover({ type, title }: { type: string; title: string }) 
   )
 }
 
-export function FlowPipeline() {
+export function FlowPipeline({ activeStep = 0 }: { activeStep?: number }) {
   const steps = [
     { label: '自由对话', icon: '💬' },
     { label: '能力模块', icon: '🧩' },
@@ -166,15 +166,20 @@ export function FlowPipeline() {
 
   return (
     <div className="flow-pipeline">
-      {steps.map((s, i) => (
-        <div key={s.label} className="flow-pipeline-step">
-          <div className="flow-pipeline-node">
-            <span>{s.icon}</span>
+      {steps.map((s, i) => {
+        const state = i < activeStep ? 'done' : i === activeStep ? 'active' : 'pending'
+        return (
+          <div key={s.label} className={`flow-pipeline-step flow-pipeline-step--${state}`}>
+            <div className="flow-pipeline-node">
+              <span>{s.icon}</span>
+            </div>
+            <span className="flow-pipeline-label">{s.label}</span>
+            {i < steps.length - 1 && (
+              <div className={`flow-pipeline-connector flow-pipeline-connector--${i < activeStep ? 'done' : 'pending'}`} />
+            )}
           </div>
-          <span className="flow-pipeline-label">{s.label}</span>
-          {i < steps.length - 1 && <div className="flow-pipeline-connector" />}
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

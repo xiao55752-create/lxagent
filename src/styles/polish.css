@@ -211,10 +211,9 @@
 }
 
 .home-section-sub {
-  text-align: center;
   color: var(--text-secondary);
   font-size: 15px;
-  margin: -8px auto 28px;
+  margin: 10px auto 0;
   max-width: 480px;
 }
 
@@ -224,7 +223,11 @@
 }
 
 .home-intelligence-section {
-  padding-bottom: 80px;
+  padding-bottom: 56px;
+}
+
+.home-intelligence-grid {
+  padding-bottom: 8px;
 }
 
 /* 知识库 — 容器由 PageShell 负责，此处只保留组件级样式 */
@@ -366,6 +369,10 @@
     justify-content: center;
   }
 
+  .home-stats {
+    justify-content: center;
+  }
+
   .home-visual-right {
     flex: 1;
     width: 100%;
@@ -441,6 +448,18 @@
 
   .home-visual-left h1 {
     font-size: 34px;
+  }
+
+  .home-stats {
+    gap: 20px;
+  }
+
+  .home-stat-value {
+    font-size: 22px;
+  }
+
+  .home-showcase-card {
+    animation: none;
   }
 
   .home-feature-grid,
