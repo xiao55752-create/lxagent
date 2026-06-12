@@ -1,0 +1,50 @@
+{
+  "name": "project-init-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "tsc -p server/tsconfig.json && node server/dist/index.js",
+    "dev:server": "npm run dev:api",
+    "dev:server:watch": "tsc -p server/tsconfig.json --watch",
+    "stop": "node scripts/stop-dev.mjs",
+    "dev:all": "node scripts/stop-dev.mjs && concurrently -k -n web,api -c blue,green \"npm run dev\" \"npm run dev:server\"",
+    "restart": "npm run dev:all",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.2.5",
+    "antd": "^6.4.3",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.21",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.17.0",
+    "remark-gfm": "^4.0.1",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "concurrently": "^9.1.2",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12"
+  }
+}

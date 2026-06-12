@@ -1,0 +1,493 @@
+/* ===== 全局页面抛光：统一布局、品牌色、响应式 ===== */
+
+:root {
+  --page-max: 1180px;
+  --page-max-wide: 1280px;
+  --page-gutter: clamp(16px, 3vw, 32px);
+  --topbar-h: 56px;
+  --surface-elevated: #ffffff;
+  --border-subtle: rgba(99, 102, 241, 0.1);
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(99, 102, 241, 0.06);
+}
+
+/* 顶栏 */
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--topbar-h);
+  padding: 0 var(--page-gutter);
+  box-shadow: 0 1px 0 var(--border-subtle);
+}
+
+.app-brand {
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.15s;
+}
+
+.app-brand:hover {
+  opacity: 0.85;
+}
+
+.app-nav a {
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+
+.app-nav a:hover {
+  background: #f1f5f9;
+  color: var(--brand-indigo);
+}
+
+.app-nav a.active {
+  background: linear-gradient(135deg, #eef2ff, #ecfeff);
+  color: var(--brand-indigo);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.15);
+}
+
+.app-health {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid #e2e8f0;
+}
+
+.app-health-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+.app-health-dot.ok {
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.app-health-dot.err {
+  background: #ef4444;
+}
+
+.app-main--home {
+  padding: 0;
+}
+
+.app-main--workspace {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 标准页面容器 */
+.page-shell {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-gutter);
+  padding-bottom: 48px;
+}
+
+.page-shell--wide {
+  max-width: var(--page-max-wide);
+}
+
+.page-shell--flush {
+  padding-top: 0;
+}
+
+/* 覆盖 index.css 中与 PageShell 重复的旧布局 */
+.page-shell.list-page,
+.page-shell.kb-visual-page {
+  max-width: var(--page-max-wide);
+  padding: var(--page-gutter);
+  padding-bottom: 48px;
+}
+
+.page-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 28px;
+  padding-top: 8px;
+  flex-wrap: wrap;
+}
+
+.page-hero-text h1 {
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.page-hero-text p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 560px;
+}
+
+.page-hero-badge,
+.list-hero-badge {
+  background: linear-gradient(135deg, #eef2ff, #ecfeff);
+  color: var(--brand-indigo);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.page-hero-actions,
+.list-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 统一分析卡片 */
+.approval-dashboard,
+.integration-history {
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-subtle);
+}
+
+/* 立项卡片 */
+.init-card {
+  border-radius: 18px;
+  box-shadow: var(--shadow-card);
+  border-color: var(--border-subtle);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.init-card:hover {
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.14);
+}
+
+.init-card-grid {
+  gap: 18px;
+}
+
+.list-empty {
+  padding: 64px 24px;
+  background: var(--surface);
+  border-radius: 20px;
+  border: 1px dashed #cbd5e1;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 8px 0 16px;
+}
+
+/* 首页 */
+.home-visual {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(99, 102, 241, 0.25), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(6, 182, 212, 0.2), transparent),
+    linear-gradient(165deg, #0f172a 0%, #1e1b4b 45%, #0c4a6e 100%);
+}
+
+.home-features-section {
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.06);
+}
+
+.home-section-sub {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: -8px auto 28px;
+  max-width: 480px;
+}
+
+.home-feature-card,
+.home-intelligence-card {
+  box-shadow: var(--shadow-card);
+}
+
+.home-intelligence-section {
+  padding-bottom: 80px;
+}
+
+/* 知识库 — 容器由 PageShell 负责，此处只保留组件级样式 */
+.kb-category-card {
+  box-shadow: var(--shadow-card);
+}
+
+.kb-doc-card {
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+
+.kb-result-card {
+  border-radius: 14px;
+}
+
+/* 工作台 */
+.workspace-wrap {
+  height: calc(100vh - var(--topbar-h));
+  background: #eef1f8;
+}
+
+.visual-workflow-header {
+  display: flex;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 10px var(--page-gutter);
+  flex-wrap: wrap;
+  min-height: 52px;
+  box-shadow: 0 1px 0 var(--border-subtle);
+}
+
+.workflow-header-info {
+  flex: 1;
+  min-width: 160px;
+}
+
+.workspace-layout {
+  height: calc(100vh - var(--topbar-h) - 52px);
+}
+
+.visual-sidebar {
+  box-shadow: 1px 0 0 var(--border-subtle);
+}
+
+.visual-chat {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.chat-messages {
+  scroll-behavior: smooth;
+}
+
+.chat-messages::-webkit-scrollbar,
+.agent-activity-list::-webkit-scrollbar,
+.material-diff-view::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb,
+.agent-activity-list::-webkit-scrollbar-thumb,
+.material-diff-view::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.visual-report {
+  box-shadow: -1px 0 0 var(--border-subtle);
+}
+
+.report-panel-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.report-content {
+  padding: 16px 20px 24px;
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+.report-content h1,
+.report-content h2,
+.report-content h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+}
+
+/* 对话区面板间距统一 */
+.approval-timeline,
+.context-rules-panel,
+.archive-push-panel,
+.gonogo-panel,
+.similar-cases-panel,
+.agent-undo-bar,
+.approval-gate-panel,
+.agent-plan-panel {
+  margin-left: clamp(12px, 2vw, 24px);
+  margin-right: clamp(12px, 2vw, 24px);
+}
+
+/* Ant 按钮主色 */
+.btn-glow.ant-btn-primary {
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.btn-glow.ant-btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+/* 能力模块激活色统一 */
+.capability-module-card.focused {
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+}
+
+.phase-item.active {
+  background: #eef2ff;
+}
+
+.phase-item .phase-subtitle.executing {
+  color: var(--brand-indigo);
+}
+
+/* 响应式 */
+@media (max-width: 1100px) {
+  .home-visual-hero {
+    flex-direction: column;
+    padding-top: 48px;
+    text-align: center;
+  }
+
+  .home-visual-left > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-actions {
+    justify-content: center;
+  }
+
+  .home-visual-right {
+    flex: 1;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .home-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .kb-category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .approval-dashboard-kpis {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .workspace-layout {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .phase-sidebar.visual-sidebar {
+    width: 100%;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .capability-modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chat-area.visual-chat {
+    min-height: 420px;
+    flex: 1;
+  }
+
+  .report-panel.visual-report {
+    min-height: 360px;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .material-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-topbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--topbar-h);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+
+  .app-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .app-health {
+    display: none;
+  }
+
+  .home-visual-left h1 {
+    font-size: 34px;
+  }
+
+  .home-feature-grid,
+  .home-intelligence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kb-category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-hero-actions {
+    width: 100%;
+  }
+
+  .page-hero-actions .ant-btn {
+    flex: 1;
+  }
+
+  .init-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capability-modules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .material-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .integration-push-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .visual-workflow-header {
+    padding: 10px 16px;
+  }
+
+  .actor-role-selector {
+    order: 3;
+    width: 100%;
+  }
+}

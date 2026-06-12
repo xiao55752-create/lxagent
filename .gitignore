@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+server/dist/
+.server/data/
+server/data/initiations/
+server/data/
+_git_store/
